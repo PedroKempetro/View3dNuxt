@@ -3,6 +3,16 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-07-15',
   devtools: { enabled: true },
 
+  // GitHub Pages configuration
+  app: {
+    baseURL: '/View3dNuxt/', // Nome do seu repositório
+    buildAssetsDir: 'assets',
+  },
+
+  // Geração estática para GitHub Pages
+  ssr: false,
+  target: 'static',
+
   vue: {
     compilerOptions: {
       isCustomElement: (tag) => {
