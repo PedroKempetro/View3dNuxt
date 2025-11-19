@@ -26,7 +26,6 @@ export const useThreeScene = (canvas: Ref<HTMLCanvasElement | null>) => {
     )
     camera.position.set(...SCENE_CONFIG.cameraPosition)
 
-    // Renderer
     renderer = new THREE.WebGLRenderer({
       canvas: canvas.value,
       antialias: true,
@@ -36,21 +35,17 @@ export const useThreeScene = (canvas: Ref<HTMLCanvasElement | null>) => {
     renderer.setSize(canvas.value.clientWidth, canvas.value.clientHeight)
     renderer.setPixelRatio(window.devicePixelRatio)
 
-    // Lighting
     setupLights()
 
-    // Grid
     gridHelper = new THREE.GridHelper(SCENE_CONFIG.gridSize, SCENE_CONFIG.gridDivisions)
     scene.add(gridHelper)
 
-    // Controls
     controls = new OrbitControls(camera, renderer.domElement)
     controls.autoRotate = SCENE_CONFIG.autoRotate
     controls.autoRotateSpeed = SCENE_CONFIG.autoRotateSpeed
     controls.enableZoom = true
     controls.enablePan = true
 
-    // Handle resize
     window.addEventListener('resize', handleResize)
   }
 

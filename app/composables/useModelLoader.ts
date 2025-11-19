@@ -20,7 +20,6 @@ export const useModelLoader = (getScene: () => THREE.Scene | null) => {
         return
       }
 
-      // Remove old model
       if (currentModel) {
         scene.remove(currentModel)
       }
@@ -43,7 +42,6 @@ export const useModelLoader = (getScene: () => THREE.Scene | null) => {
             mixer = new THREE.AnimationMixer(currentModel!)
           }
 
-          // Center and scale model
           const box = new THREE.Box3().setFromObject(currentModel!)
           const center = box.getCenter(new THREE.Vector3())
           const size = box.getSize(new THREE.Vector3())
